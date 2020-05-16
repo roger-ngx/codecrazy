@@ -158,7 +158,8 @@ function convertNumberToText(num){
 
   num = num - ok * 10**8;
   const man = num / 10**4 | 0;
-  man > 0 && ( ret += man === 1 ? '일만' :  convertThousandsNumber(man) + '만');
+  man == 1 && ( ret += (jo || ok)  ? '일만' : '만');
+  man > 1 && ( ret += man === 1  ? '일만' :  convertThousandsNumber(man) + '만');
 
   num = num - man * 10**4;
   num > 0 && (ret += convertThousandsNumber(num))
